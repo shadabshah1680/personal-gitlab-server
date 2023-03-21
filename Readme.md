@@ -18,12 +18,13 @@ sudo EXTERNAL_URL="$URL" yum install -y gitlab-ee
 ## Setting Up Runner
 Runner Script:
 ``` bash
+ARCH=$(uname -m)
 URL=http://gitlab.example.com
 TOKEN=D8wPuXvJuSCy4xVaz6h9
 sudo yum install git docker -y
 sudo systemctl start docker 
-curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_aarch64.rpm"
-sudo rpm -i gitlab-runner_aarch64.rpm
+curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_$ARCH.rpm"
+sudo rpm -i gitlab-runner_$ARCH.rpm
 cat >/etc/gitlab-runner/config.toml<< EOF
 concurrent = 1
 check_interval = 0
