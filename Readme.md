@@ -11,7 +11,10 @@ sudo EXTERNAL_URL="$URL" yum install -y gitlab-ee
 ```
 - >> `Note`: Please be patience for at least 10 minutes during server installation
 - >> `Note`: Please don't forget to set A type record against server public ip using same URL
-
+- >> `Note`: For accessing gitlab-server use $URL in browser  with deafult username as root and find password using following command in gitlab-server
+```
+ sudo cat /etc/gitlab/initial_root_password  | grep -i Password:
+```
 ## Setting Up Runner
 Runner Script:
 ``` bash
@@ -49,4 +52,3 @@ shutdown_timeout = 0
 EOF
 sudo gitlab-runner restart
 ```
-- >> Note : `sudo cat /etc/gitlab/initial_root_password  | grep -i Password:`
